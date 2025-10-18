@@ -126,10 +126,10 @@ for iteration in range(65000):
     db = np.sum(dhidden, axis=0, keepdims=True) 
 
     # Update paramaters according to ROC
-    dense1.weights += -(step_size * dW )
-    dense1.biases += -(step_size * db)
-    dense2.weights += -(step_size * dW2)
-    dense2.biases += -(step_size * db2)
+    dense1.weights += -(step_size * dW) * np.random.rand()
+    dense1.biases += -(step_size * db) * np.random.rand()
+    dense2.weights += -(step_size * dW2) * np.random.rand()
+    dense2.biases += -(step_size * db2) * np.random.rand()
 
 # evaluate training set accuracy
 Activation1.output = np.maximum(0, np.dot(X, dense1.weights) + dense1.biases)
@@ -154,4 +154,5 @@ plt.contourf(xx, yy, Z, cmap=plt.cm.Spectral, alpha=0.8)
 plt.scatter(X[:, 0], X[:, 1], c=y, s=40, cmap=plt.cm.Spectral)
 plt.xlim(xx.min(), xx.max())
 plt.ylim(yy.min(), yy.max())
+
 plt.show()
